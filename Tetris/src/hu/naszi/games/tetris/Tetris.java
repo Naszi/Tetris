@@ -1,9 +1,33 @@
 package hu.naszi.games.tetris;
 
-public class Tetris {
+import java.awt.BorderLayout;
 
-	public static void main(String[] args) {
-		System.out.println("Tetris");
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class Tetris extends JFrame {
+
+	JLabel statusBar;
+
+	public Tetris() {
+		statusBar = new JLabel(" 0");
+		add(statusBar, BorderLayout.SOUTH);
+		Board board = new Board(this);
+		add(board);
+		board.start();
+
+		setSize(200, 400);
+		setTitle("Tetris");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	public JLabel getStatusBar() {
+		return statusBar;
+	}
+
+	public static void main(String[] args) {
+		Tetris game = new Tetris();
+		game.setLocationRelativeTo(null);
+		game.setVisible(true);
+	}
 }
