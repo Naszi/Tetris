@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javafx.scene.control.TreeSortMode;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -214,21 +216,57 @@ public class Board extends JPanel implements ActionListener {
 				new Color(102, 204, 102), new Color(102, 102, 204),
 				new Color(204, 204, 102), new Color(204, 102, 204),
 				new Color(102, 204, 204), new Color(2018, 170, 0), };
-		
+
 		Color color = colors[shape.ordinal()];
-		
+
 		g.setColor(color);
 		g.fillRect(x + 1, y + 1, squareWidth() - 2, squareHeight() - 2);
-		
+
 		g.setColor(color.brighter());
-		g.drawLine(x + 1, y + squareHeight() - 1, x + squareWidth() - 1, y + squareHeight() - 1);
-		g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1, x + squareWidth() - 1, y + y + 1);
-	}
-	
-	class TAdapter extends KeyAdapter {
-		public void keyPressed(KeyEvent e) {
-			
-		}
+		g.drawLine(x + 1, y + squareHeight() - 1, x + squareWidth() - 1, y
+				+ squareHeight() - 1);
+		g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1, x
+				+ squareWidth() - 1, y + y + 1);
 	}
 
+	class TAdapter extends KeyAdapter {
+		public void keyPressed(KeyEvent e) {
+			if (!isStarted || curPiece.getShape() == Tetrominoes.NOSHAPE)
+				return;
+
+			int keyCode = e.getKeyCode();
+
+			if (keyCode == 'p' || keyCode == 'P') {
+				pause();
+				return;
+			}
+
+			if (isPaused)
+				return;
+
+			switch (keyCode) {
+			case KeyEvent.VK_LEFT:
+				tryMove(curPiece, curX - 1, curY);
+				break;
+			case KeyEvent.VK_RIGHT:
+				tryMove(curPiece, curX + 1, curY);
+				break;
+			case KeyEvent.VK_DOWN:
+				tryMove(curPiece.rotateRight(), curX, curY);
+				break;
+			case KeyEvent.VK_UP:
+				tryMove(curPiece.rotateLeft(), curX, curY);
+				break;
+			case KeyEvent.VK_SPACE:
+				dropDown();
+				break;
+			case 'd':
+				oneLineDown();
+				break;
+			case 'D':
+				oneLineDown();
+				break;
+			}
+		}
+	}
 }
