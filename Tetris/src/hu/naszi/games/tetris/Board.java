@@ -10,8 +10,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javafx.scene.control.TreeSortMode;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -215,7 +213,7 @@ public class Board extends JPanel implements ActionListener {
 		Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102),
 				new Color(102, 204, 102), new Color(102, 102, 204),
 				new Color(204, 204, 102), new Color(204, 102, 204),
-				new Color(102, 204, 204), new Color(2018, 170, 0), };
+				new Color(102, 204, 204), new Color(2018, 170, 0) };
 
 		Color color = colors[shape.ordinal()];
 
