@@ -16,7 +16,7 @@ public class Shape {
 		setShape(Tetrominoes.NOSHAPE);
 	}
 
-	private void setShape(Tetrominoes shape) {
+	protected void setShape(Tetrominoes shape) {
 		coordsTable = new int[][][] { { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } },
 				{ { 0, -1 }, { 0, 0 }, { -1, 0 }, { -1, 1 } }, { { 0, -1 }, { 0, 0 }, { 1, 0 }, { 1, 1 } },
 				{ { 0, -1 }, { 0, 0 }, { 0, 1 }, { 0, 2 } }, { { -1, 0 }, { 0, 0 }, { 1, 0 }, { 0, 1 } },
