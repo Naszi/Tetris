@@ -104,8 +104,7 @@ public class Board extends JPanel implements ActionListener {
 			for (int j = 0; j < BOARDWIDTH; ++j) {
 				Tetrominoes shape = shapeAt(j, BOARDHEIGHT - i - 1);
 				if (shape != Tetrominoes.NOSHAPE) {
-					drawSquare(g, 0 + j * squareWidth(), boardTop + i
-							* squareHeight(), shape);
+					drawSquare(g, 0 + j * squareWidth(), boardTop + i * squareHeight(), shape);
 				}
 			}
 		}
@@ -114,8 +113,7 @@ public class Board extends JPanel implements ActionListener {
 			for (int i = 0; i < 4; ++i) {
 				int x = curX + curPiece.x(i);
 				int y = curY - curPiece.y(i);
-				drawSquare(g, 0 + x * squareWidth(), boardTop
-						+ (BOARDHEIGHT - y - 1) * squareHeight(),
+				drawSquare(g, 0 + x * squareWidth(), boardTop + (BOARDHEIGHT - y - 1) * squareHeight(),
 						curPiece.getShape());
 			}
 		}
@@ -210,10 +208,9 @@ public class Board extends JPanel implements ActionListener {
 	}
 
 	private void drawSquare(Graphics g, int x, int y, Tetrominoes shape) {
-		Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102),
-				new Color(102, 204, 102), new Color(102, 102, 204),
-				new Color(204, 204, 102), new Color(204, 102, 204),
-				new Color(102, 204, 204), new Color(204, 170, 0) };
+		Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102), new Color(102, 204, 102),
+				new Color(102, 102, 204), new Color(204, 204, 102), new Color(204, 102, 204), new Color(102, 204, 204),
+				new Color(204, 170, 0) };
 
 		Color color = colors[shape.ordinal()];
 
@@ -221,10 +218,8 @@ public class Board extends JPanel implements ActionListener {
 		g.fillRect(x + 1, y + 1, squareWidth() - 2, squareHeight() - 2);
 
 		g.setColor(color.brighter());
-		g.drawLine(x + 1, y + squareHeight() - 1, x + squareWidth() - 1, y
-				+ squareHeight() - 1);
-		g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1, x
-				+ squareWidth() - 1, y + 1);
+		g.drawLine(x + 1, y + squareHeight() - 1, x + squareWidth() - 1, y + squareHeight() - 1);
+		g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1, x + squareWidth() - 1, y + 1);
 	}
 
 	class TAdapter extends KeyAdapter {
