@@ -213,7 +213,7 @@ public class Board extends JPanel implements ActionListener {
 		Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102),
 				new Color(102, 204, 102), new Color(102, 102, 204),
 				new Color(204, 204, 102), new Color(204, 102, 204),
-				new Color(102, 204, 204), new Color(2018, 170, 0) };
+				new Color(102, 204, 204), new Color(204, 170, 0) };
 
 		Color color = colors[shape.ordinal()];
 
@@ -224,7 +224,7 @@ public class Board extends JPanel implements ActionListener {
 		g.drawLine(x + 1, y + squareHeight() - 1, x + squareWidth() - 1, y
 				+ squareHeight() - 1);
 		g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1, x
-				+ squareWidth() - 1, y + y + 1);
+				+ squareWidth() - 1, y + 1);
 	}
 
 	class TAdapter extends KeyAdapter {
