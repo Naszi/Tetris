@@ -139,7 +139,7 @@ public class Board extends JPanel implements ActionListener {
 	private void pieceDropped() {
 		for (int i = 0; i < 4; ++i) {
 			int x = curX + curPiece.x(i);
-			int y = curY + curPiece.y(i);
+			int y = curY - curPiece.y(i);
 			board[(y * BOARDWIDTH) + x] = curPiece.getShape();
 		}
 		removeFullLines();
